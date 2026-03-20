@@ -33,6 +33,7 @@ import SidebarHeader from './header';
 import TemplateContentPanel from '../template-content-panel';
 import TemplatePartContentPanel from '../template-part-content-panel';
 import { MediaMetadataPanel } from '../media';
+import PostRevisionsPanel from '../post-revisions-panel';
 import RevisionBlockDiffPanel from '../revision-block-diff';
 import useAutoSwitchEditorSidebars from '../provider/use-auto-switch-editor-sidebars';
 import { sidebars } from './constants';
@@ -132,6 +133,10 @@ const SidebarContent = ( {
 							{ isRevisionsMode && <RevisionFieldsDiffPanel /> }
 							{ ! isRevisionsMode && (
 								<>
+									{ window?.__experimentalDataFormInspector &&
+										[ 'post', 'page' ].includes(
+											postType
+										) && <PostRevisionsPanel /> }
 									<PluginDocumentSettingPanel.Slot />
 									<TemplateContentPanel />
 									<TemplatePartContentPanel />
